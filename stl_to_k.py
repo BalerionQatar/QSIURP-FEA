@@ -82,14 +82,14 @@ for i in stl_mesh.vectors:
 
 
 content = """$# LS-DYNA Keyword file created by LS-PrePost(R) V4.5.0 (Beta) - 01Sep2017
-$# Created on Sep-7-2017 (08:30:36)
+$# Created on May-27-2023 (01:16:36)
 *KEYWORD
 *TITLE
-$  Author Daniel Hilding, DYNAmore Nordic AB
+$  Author Mohammad Annan
 $  Units  mm, ms, kg => GPa
 $
 $  Description
-$  Indentation of a car fender.
+$  Novel converter from .stl to .k
 $#                                                                         title
 Explicit bumper test
 *CONTROL_ACCURACY
@@ -222,7 +222,6 @@ def form_shells(unique_nodes):
 shells = form_shells(unique_nodes)
 
 
-
 shell_elements = form_shells(unique_nodes)
 # write_shells_to_file(shell_elements)
 with open('test3.k', 'w') as f:
@@ -238,36 +237,36 @@ with open('test3.k', 'w') as f:
     for i in range(len(unique_nodes)):
         if i+1 < 10:
             f.write("       {:<1}  {:>14.6f}  {:>14.6f}  {:>14.6f}       0       0\n".format(
-                i+1, 
-                float(unique_nodes[i][0].replace(']', '')), 
-                float(unique_nodes[i][1].replace(']', '')), 
+                i+1,
+                float(unique_nodes[i][0].replace(']', '')),
+                float(unique_nodes[i][1].replace(']', '')),
                 float(unique_nodes[i][2].replace(']', ''))))
         elif i+1 >= 10 and i+1 < 100:
             f.write("      {:<2}  {:>14.6f}  {:>14.6f}  {:>14.6f}       0       0\n".format(
-                i+1, 
-                float(unique_nodes[i][0].replace(']', '')), 
-                float(unique_nodes[i][1].replace(']', '')), 
+                i+1,
+                float(unique_nodes[i][0].replace(']', '')),
+                float(unique_nodes[i][1].replace(']', '')),
                 float(unique_nodes[i][2].replace(']', ''))))
-        elif i+1 >= 100 and i + 1 < 1000: 
+        elif i+1 >= 100 and i + 1 < 1000:
             f.write("     {:<3}  {:>14.6f}  {:>14.6f}  {:>14.6f}       0       0\n".format(
-                i+1, 
-                float(unique_nodes[i][0].replace(']', '')), 
-                float(unique_nodes[i][1].replace(']', '')), 
+                i+1,
+                float(unique_nodes[i][0].replace(']', '')),
+                float(unique_nodes[i][1].replace(']', '')),
                 float(unique_nodes[i][2].replace(']', ''))))
-        else: 
+        else:
             f.write("    {:<4}  {:>14.6f}  {:>14.6f}  {:>14.6f}       0       0\n".format(
-                i+1, 
-                float(unique_nodes[i][0].replace(']', '')), 
-                float(unique_nodes[i][1].replace(']', '')), 
+                i+1,
+                float(unique_nodes[i][0].replace(']', '')),
+                float(unique_nodes[i][1].replace(']', '')),
                 float(unique_nodes[i][2].replace(']', ''))))
         # if i+1 < 10:
         #     f.write("       {:<1}  {:>14.6f}  {:>14.6f}  {:>14.6f}       0       0\n".format(
         #         i+1, float(unique_nodes[i][0].replace(']', '')), float(unique_nodes[i][1].replace(']', '')), float(unique_nodes[i][2].replace(']', ''))))
         # if i+1 >= 10 and i+1 < 100:
         #     f.write("      {:<4}  {:>14.6f}  {:>14.6f}{:>14.6f}       0       0\n".format(i+1, float(unique_nodes[i][0].replace(']', '')), float(unique_nodes[i][1].replace(']', '')), float(unique_nodes[i][2].replace(']', ''))))
-        # if i+1 >= 100 and i + 1 < 1000: 
+        # if i+1 >= 100 and i + 1 < 1000:
         #     f.write("     {:<4}  {:>14.6f}  {:>14.6f}{:>14.6f}       0       0\n".format(i+1, float(unique_nodes[i][0].replace(']', '')), float(unique_nodes[i][1].replace(']', '')), float(unique_nodes[i][2].replace(']', ''))))
-        # if i+1 >= 1000: 
+        # if i+1 >= 1000:
         #     f.write("    {:<4}  {:>14.6f}  {:>14.6f}{:>14.6f}       0       0\n".format(i+1, float(unique_nodes[i][0].replace(']', '')), float(unique_nodes[i][1].replace(']', '')), float(unique_nodes[i][2].replace(']', ''))))
     print(True)
     f.write(bottom_content)
