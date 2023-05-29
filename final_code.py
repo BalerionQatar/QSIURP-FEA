@@ -302,18 +302,6 @@ print("Simulation completed.")
 
 # Write to a .cfile
 with open("your_script.cfile", "w") as file:
-    file.write("# Script for LS-PrePost (csh)\n")
-    file.write("\n")
-    file.write("# Open d3plot file\n")
     file.write("open d3plot\n")
-    file.write("\n")
-    file.write("# Set deformation scale\n")
-    file.write("defscale 1.0\n")
-    file.write("\n")
-    file.write("# Set view\n")
-    file.write("view iso1\n")
-    file.write("\n")
-    file.write("# Save image\n")
-    file.write("hardcopy filename deformation.png png\n")
 
 subprocess.run(["lspp4", "-nographics", "-c", "your_script.cfile"])
